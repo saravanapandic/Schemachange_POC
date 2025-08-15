@@ -14,8 +14,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Use Python 3.8.x
         uses: actions/setup-python@v2.2.1
         with:
           python-version: 3.8.x
@@ -33,22 +31,6 @@ jobs:
           python --version
           echo "Step 1: Installing schemachange"
           pip install schemachange
-          echo "Step 2: create stage and file format"
-          schemachange -f $GITHUB_WORKSPACE/migrations -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --dry-run --vars '{"db_name": "DEVELOPMENT"}'
-  create-pull-request:
-      needs: Object_dryrun_SF
-      runs-on: ubuntu-latest
+          schemachange -f $GITHUB_WORKSPACE/DB_Objects -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --dry-run --vars '{"db_name": "DEVELOPMENT"}'
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-
-        - name: Create Pull Request to main
-          uses: peter-evans/create-pull-request@v5
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            base: main
-            branch: development
-            title: 'Auto PR: Merge development into main'
-            body: |
-              This pull request has raised to Main branch.
+         
