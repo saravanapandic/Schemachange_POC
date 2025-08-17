@@ -19,7 +19,8 @@ jobs:
         with:
           python-version: 3.8.x
 
-      - name: Run schemachange
+      - name: Run schemachange for SIT
+        if: github.ref == 'refs/heads/dev'
         env:
           SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
           SF_USERNAME: ${{ secrets.SF_USERNAME }}
@@ -32,7 +33,7 @@ jobs:
           python --version
           echo "Step 1: Installing schemachange"
           pip install schemachange
-          schemachange -f $GITHUB_WORKSPACE/DB_Objects -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY  --vars '{"db_name": "DEVELOPMENT"}' --create-change-history-table
+          schemachange -f $GITHUB_WORKSPACE/DB_Objects -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY  --dry-run --vars '{"db_name": "DEVELOPMENT"}' --create-change-history-table
 
           
          
