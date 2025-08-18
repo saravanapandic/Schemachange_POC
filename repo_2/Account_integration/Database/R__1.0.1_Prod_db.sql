@@ -18,6 +18,4 @@
 -- USE ROLE DATABASE_OBJECTS_DEPLOYMENT_ADMIN;
 
 
-
-
 create or replace database prod_db; 
