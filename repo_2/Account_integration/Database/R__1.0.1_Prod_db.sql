@@ -19,4 +19,4 @@
 
 
 
-create database prod_db; 
+create or replace database prod_db; 
