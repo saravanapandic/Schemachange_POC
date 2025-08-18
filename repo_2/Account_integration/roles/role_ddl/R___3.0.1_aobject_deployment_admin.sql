@@ -17,7 +17,6 @@
 
 
 
-
 -- 1. Create the role
 CREATE ROLE OBJECTS_DEPLOYMENT_ADMIN;
 
