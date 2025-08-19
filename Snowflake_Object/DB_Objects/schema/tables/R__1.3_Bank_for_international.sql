@@ -18,7 +18,7 @@
 -- USE ROLE DATABASE_OBJECTS_DEPLOYMENT_ADMIN;
 
 SET DB_NAME = '{{ db_name }}';
-use database $DB_NAME;
+use database IDENTIFIER($DB_NAME);
 
 
 create or replace TABLE PUBLIC.BANK_FOR_INTERNATIONAL_2 (
