@@ -53,7 +53,7 @@ jobs:
           python --version
           echo "Step 1: Installing schemachange"
           pip install schemachange
-          schemachange -f $GITHUB_WORKSPACE/Snowflake_Object -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY  --dry-run --vars '{"db_name": "prod_db"}' --create-change-history-table
+          schemachange -f $GITHUB_WORKSPACE/Snowflake_Object -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY  --vars '{"db_name": "prod_db"}' --create-change-history-table
           schemachange -f $GITHUB_WORKSPACE/repo_2/Account_integration -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY  --vars '{"db_name": "prod_db"}' --create-change-history-table
   
           
