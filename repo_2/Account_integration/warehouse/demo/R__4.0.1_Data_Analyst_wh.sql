@@ -1,6 +1,6 @@
 
 -- ******************************************************************
--- Script Name: R__1.0.1_Prod_db.sql
+-- Script Name: R__3.0.1_Data_Analyst.sql
 -- Description: This script will create database for Prod
 -- Author: user name
 -- Date Created: 18/08/2025
@@ -11,11 +11,16 @@
 -- Change Log:
 -- Date        Author          Description
 -- ----------  --------------  --------------------------------------
--- 28/01/2025  user_name      Initial Version
+-- 18/08/2025  user_name      Initial Version
 -- 
 -- ******************************************************************
 
 -- USE ROLE DATABASE_OBJECTS_DEPLOYMENT_ADMIN;
 
 
-create or replace database prod_db; 
+-- 1. Create a warehouse
+CREATE or replace WAREHOUSE DATA_ANALYST_WH
+  WITH WAREHOUSE_SIZE = 'XSMALL'
+  AUTO_SUSPEND = 300
+  AUTO_RESUME = TRUE
+  INITIALLY_SUSPENDED = TRUE;
