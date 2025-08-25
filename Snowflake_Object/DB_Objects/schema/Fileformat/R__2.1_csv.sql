@@ -33,7 +33,7 @@ CREATE OR REPLACE FILE FORMAT PUBLIC.csv_format
   ESCAPE_UNENCLOSED_FIELD = NONE;     
   DEVELOPMENT.PUBLIC.CSV_FORMAT;
 
-CREATE STAGE PUBLIC.stage_LD
+CREATE or replace STAGE PUBLIC.stage_LD
 STORAGE_INTEGRATION = SF_LD_STG
 URL = 'azure://uiapdstrg.blob.core.windows.net/snowflakepoc1';
 use database prod_db;
