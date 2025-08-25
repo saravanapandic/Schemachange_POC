@@ -32,7 +32,7 @@ CREATE OR REPLACE FILE FORMAT PUBLIC.csv_format
   FIELD_OPTIONALLY_ENCLOSED_BY = '"'  -- Handles quoted fields with commas
   ESCAPE_UNENCLOSED_FIELD = NONE; 
 
-CREATE STAGE PUBLIC.stage_LD
+CREATE or replace STAGE PUBLIC.stage_LD
 STORAGE_INTEGRATION = SF_LD_STG
 URL = 'azure://uiapdstrg.blob.core.windows.net/snowflakepoc1';
 use database prod_db;
